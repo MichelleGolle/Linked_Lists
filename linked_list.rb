@@ -2,41 +2,38 @@ class Node
 
 attr_accessor :node_name, :next_node
 
-def initialize(node)
-  @node_name = node
-  @next_node = nil
-end
+  def initialize(name)
+    @node_name = name
+    @next_node = nil
+  end
 end
 
 class LinkedList
 
-attr_accessor :head, :node, :count, :tail
+attr_accessor :head, :count, :tail
 
   def initialize
-  @head
-  @node
-  @count = 0
+    @head
+    @tail
+    @count = 0
   end
 
 
-  def push(node)
-  @list = LinkedList.new
-    @node = Node.new(node)
-    if @head == nil
-      @head = @node
-      @count += 1
-    else while  @node.next_node != nil
-      @node = @node.next_node
-      @count += 1
+  def push(name)
+    node = Node.new(name) #make new node
+    if @head == nil #if there is no head
+      @head = node #the new node is the head
+    else
+      @tail.next_node = node #makes node the last node in the list
     end
-    @node.next_node = Node.new(node)
-    @count +=1
-    end
-    end
+    @count += 1 #keeps track of how many nodes in the list by adding one to count
+    @tail = node
+  end
 
-def last_node
-@list = LinkedList.new
-@node = Node.new(node)
-@node.next_node == nil
+  def include?(name)
+  end
+
+  def find(name)
+  end
+
 end
-  end

@@ -6,20 +6,16 @@ require_relative 'linked_list'
 class LinkedListTest < Minitest::Test
 attr_reader :list
 
-  def setup
-    list = LinkedList.new
-  end
-
-
   def test_it_starts_with_zero_elements
     assert_equal 0, list.to_a.count
   end
 
   def test_a_node_links_to_its_next_element
+    list = LinkedList.new
     list.push("hello")
     list.push("world")
-    assert_equal "world", list.last_node.node_name
-    assert_equal "world", list.head_node.next_node.node_name
+    assert_equal "world", list.tail.node_name
+    assert_equal "world", list.head.next_node.node_name
   end
 
   def test_nodes_have_data
@@ -44,7 +40,7 @@ attr_reader :list
   def test_next_node_for_the_last_node_is_nil
     list = LinkedList.new
     list.push("world")
-    assert_equal nil, list.last_node.next_node
+    assert_equal nil, list.tail.next_node
   end
 
   def test_find_if_an_element_is_included_in_the_list
