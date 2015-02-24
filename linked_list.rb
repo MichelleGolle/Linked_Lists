@@ -44,22 +44,40 @@ attr_accessor :head, :count, :tail
       while current.next_node != nil
         @count += 1
         current  = current.next_node
-        return current    
+        return current
       end
     end
   end
 
-def access(index)
-  if head.nil?
+  def access(index)
+    if head.nil?
       nil
-    elsif head.next_node.nil?
-      head.node_name
     else
       current_node = head
       index.times do
+        if current_node.next_node == nil
+          return nil
+        end
         current_node = current_node.next_node
       end
       current_node.node_name
     end
+  end
+
+  # Delete and return last node
+  def pop
+    current_node = @head     #head is beginning
+    last_node = @tail
+    if head.next_node == nil
+      @head = nil
+    else
+      until current_node.next_node.next_node == nil
+        current_node = current_node.next_node
+      end
+      current_node.next_node = nil
+    end
+    @tail = current_node
+    @count -= 1
+    return last_node
   end
 end

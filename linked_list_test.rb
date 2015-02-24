@@ -43,34 +43,12 @@ attr_reader :list
     assert_equal nil, list.tail.next_node
   end
 
-  # def test_find_if_an_element_is_included_in_the_list
-  #   skip
-  #   list = LinkedList.new
-  #   list.push("hello")
-  #   list.push("world")
-  #   assert_equal true, list.include?("hello")
-  #   assert_equal false, list.include?("bogus")
-  # end
-  #can't get this one working, not necessary though
-
-  # def test_find_a_given_node
-  #   skip
-  #   list = LinkedList.new
-  #   list.push("hello")
-  #   list.push("world")
-  #   list.push("today")
-  #
-  #   assert_equal "world", list.find("world").node_name
-  #   assert_equal "today", list.find("world").next_node.node_name
-  # end
-  #same as above
-
   def test_it_can_access_node_by_position
   list = LinkedList.new
   list.push("hello")
   list.push("world")
   list.push("today")
-  assert_equal "hello", list.access(0)
+  assert_equal "today", list.access(2)
   end
 
 
@@ -83,12 +61,13 @@ attr_reader :list
   end
 
   def test_it_can_pop_element
-  list = IterativeLinkedList.new
-  list.push("hello")
-  list.push("world")
-  list.push("today")
-  list.pop
-  assert_equal 
+    list = LinkedList.new
+    list.push("hello")
+    list.push("world")
+    list.push("today")
+    list.pop
+    assert_equal 2, list.count
+    assert_equal "world", list.tail.node_name
   end
 
 end
